@@ -1,0 +1,17 @@
+{
+  "defaultSeverity": "error",
+  "extends": ["tslint:recommended"],
+  "jsRules": {},
+  "rules": {
+    "no-any": false,
+    "no-inferrable-types": false,
+    "max-line-length": [true, 185],
+    "ter-arrow-parens": true,
+    "array-type": [false],
+    "array-bracket-spacing": true,
+    "only-arrow-functions": false,
+    "ter-prefer-arrow-callback": false,
+    "prefer-template": false
+  },
+  "rulesDirectory": []
+}
