@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/Varian721/testTask/issues"
   },
-  "homepage": "https://github.com/Varian721/testTask#readme"
+  "homepage": "https://github.com/Varian721/testTask#readme",
+  "devDependencies": {
+    "@types/node": "^12.12.12",
+    "typescript": "^3.7.2"
+  }
 }
