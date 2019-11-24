@@ -1,0 +1,12 @@
+node_modules/
+src/
+dist/
+.sonarlint
+*.lock
+*.log
+.vscode
+.alm
+.idea
+.npmrc
+.env
+.env.local
