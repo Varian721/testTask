@@ -11,7 +11,8 @@
     "array-bracket-spacing": true,
     "only-arrow-functions": false,
     "ter-prefer-arrow-callback": false,
-    "prefer-template": false
+    "prefer-template": false,
+    "whitespace": [true, "check-branch", "check-operator", "check-typecast"]
   },
   "rulesDirectory": []
 }
