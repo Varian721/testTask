@@ -1,7 +1,7 @@
 import { PatientRepository } from '.';
 import { DataBaseManager } from '..';
-import { conflict, serverError,  PatientManagerInterface} from '../..';
-import { PatientInterface } from '../../interfaces';
+import { PatientManagerInterface} from '../..';
+import { PatientInterface } from '../..';
 
 export class PatientManager implements PatientManagerInterface {
   activePatients: object;

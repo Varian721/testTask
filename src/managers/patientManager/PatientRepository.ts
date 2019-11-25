@@ -9,7 +9,7 @@ export class PatientRepository {
   ) {}
 
   async create(data: PatientModel) {
-    let result;
+    let result: any;
     return this.patientSchema
       .create(data)
       .then((data) => {

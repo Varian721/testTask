@@ -1,8 +1,9 @@
 import { DataBaseManager } from './managers/databaseManager/DataBaseManager';
+import { LoaderService } from '.';
 
-export class Core< CoreConfigInterface > {
+export class Core< ConfigInterface > {
   protected _dataBaseManager: DataBaseManager;
-  protected _loaderService: DataBaseManager;
+  protected _loaderService: LoaderService;
   protected _reporterService: DataBaseManager;
 
   protected initPromise: Promise< any>;
@@ -10,14 +11,11 @@ export class Core< CoreConfigInterface > {
   protected isInitialized: boolean = false ;
 
   constructor(
-    // tslint:disable-next-line:variable-name
-    protected _config: CoreConfigInterface,
-    protected allowedJobs: AllowedJobActionsInterface,
+    protected _config: ConfigInterface,
     protected app?: { set: (name: string, value: any) => any },
   ) {
     this._dataBaseManager = new DataBaseManager(this._config);
     this._loaderService = new LoaderService(this._dataBaseManager);
-    this._reporterService = new ReporterService(this._reporterManager);
   }
 
 

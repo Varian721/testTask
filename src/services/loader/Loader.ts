@@ -1,11 +1,10 @@
 import fs from 'fs';
 import readline from 'readline';
 
-import { LoaderInterface } from '../../interfaces/components/LoaderInterface';
+import { LoaderServiceInterface } from '../..';
 
-export class Loader implements LoaderInterface{
+export class LoaderService implements LoaderServiceInterface{
   protected store: any;
-  protected spinner;
   constructor(){
   }
   async initialize(location: string){
