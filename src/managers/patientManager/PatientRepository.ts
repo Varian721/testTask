@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import { PatientModel } from '..';
 import { EmailModel } from '..';
+import { PatientInterface } from '../../interfaces';
 
 export class PatientRepository {
   constructor(
@@ -8,7 +9,7 @@ export class PatientRepository {
     protected emailSchema: mongoose.Model<EmailModel & mongoose.Document, {}>,
   ) {}
 
-  async create(data: PatientModel) {
+  async create(data: PatientInterface) {
     let result: any;
     return this.patientSchema
       .create(data)

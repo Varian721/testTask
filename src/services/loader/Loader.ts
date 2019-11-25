@@ -1,13 +1,13 @@
 import fs from 'fs';
 import readline from 'readline';
-
-import { LoaderServiceInterface } from '../..';
+import { LoaderServiceInterface, PatientManager  } from '../..';
 
 export class LoaderService implements LoaderServiceInterface{
-  protected store: any;
-  constructor(){
+  protected manager: PatientManager;
+  constructor(manager: PatientManager){
+    this.manager = manager;
   }
-  async initialize(location: string){
+  async loadData(location: string){
     await this.checkIfFileExist(location);
     await this.readFile(location);
   }
@@ -17,6 +17,8 @@ export class LoaderService implements LoaderServiceInterface{
       const inStream = fs.createReadStream(directory);
       const rl = readline.createInterface(inStream);
       rl.on('line', (line: string) => {
+        const fields = line.split('|');
+        console.log(fields)
       });
       rl.on('close', () => {
         resolve();

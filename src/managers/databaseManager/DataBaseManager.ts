@@ -19,7 +19,7 @@ export class DataBaseManager implements DataBaseManagerInterface {
       schemaOptions: { _id: true, collection: 'EMAIL' },
     });
   }
-  connect(cb){
+  connect(cb: any){
     mongoose.connect(this.config.SESSIONS_DB, cb);
   }
 
@@ -29,7 +29,7 @@ export class DataBaseManager implements DataBaseManagerInterface {
 
   reconnect(): Promise<void>{
     return this.disconnect().then(() =>
-      this.connect((err) => {
+      this.connect((err: any) => {
         if (err !== null) {
           serverError(err);
         }

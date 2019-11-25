@@ -1,3 +1,3 @@
 export interface LoaderServiceInterface {
-  initialize(filename: string): void;
+  loadData(filename: string): void;
 }

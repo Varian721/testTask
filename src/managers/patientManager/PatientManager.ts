@@ -14,9 +14,9 @@ export class PatientManager implements PatientManagerInterface {
   }
 
   async create(data: PatientInterface) {
-    return this.repository.create(data as any) as any;
+    return this.repository.create(data);
   }
   async getByPatientId(patientId: string) {
-    return this.repository.getByPatientId(patientId) as any;
+    return this.repository.getByPatientId(patientId);
   }
 }

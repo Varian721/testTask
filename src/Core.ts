@@ -1,23 +1,33 @@
 import { DataBaseManager } from './managers/databaseManager/DataBaseManager';
 import { LoaderService } from '.';
+import { ConfigInterface } from './interfaces';
+import { PatientManager, PatientRepository } from './managers';
 
-export class Core< ConfigInterface > {
+export class Core< CoreConfigInterface extends ConfigInterface = ConfigInterface > {
   protected _dataBaseManager: DataBaseManager;
   protected _loaderService: LoaderService;
   protected _reporterService: DataBaseManager;
+  protected _patientManager: PatientManager;
 
-  protected initPromise: Promise< any>;
+  protected initPromise: Promise<any>;
 
   protected isInitialized: boolean = false ;
 
   constructor(
-    protected _config: ConfigInterface,
+    // tslint:disable-next-line:variable-name
+    protected _config: CoreConfigInterface,
     protected app?: { set: (name: string, value: any) => any },
   ) {
     this._dataBaseManager = new DataBaseManager(this._config);
-    this._loaderService = new LoaderService(this._dataBaseManager);
+    this._patientManager = new PatientManager(
+      new PatientRepository(
+        this._dataBaseManager.PatientSchema,
+        this._dataBaseManager.EmailSchema,
+        ),
+        this._dataBaseManager,
+      );
+    this._loaderService = new LoaderService(this._patientManager);
   }
-
 
   async init() {
     if (!this.isInitialized) {
@@ -51,18 +61,10 @@ export class Core< ConfigInterface > {
     }
     return this._dataBaseManager;
   }
-
   get loaderService() {
     if (!this.isInitialized) {
       throw new Error('core_not_initialized');
     }
-    return this._loaderService;
-  }
-
-  get reportService() {
-    if (!this.isInitialized) {
-      throw new Error('core_not_initialized');
-    }
-    return this._reportService;
+    return this._dataBaseManager;
   }
 }
