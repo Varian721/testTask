@@ -21,14 +21,18 @@
     "@types/inquirer": "^6.5.0",
     "@types/jest": "^24.0.23",
     "@types/lodash": "^4.14.149",
+    "@types/mongoose": "^5.5.32",
     "@types/node": "^12.12.12",
     "jest": "^24.9.0",
     "ts-jest": "^24.2.0",
+    "ts-node": "^8.5.2",
     "typescript": "^3.7.2"
   },
   "dependencies": {
     "env": "0.0.2",
     "inquirer": "^7.0.0",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.15",
+    "mongoose": "^5.7.12",
+    "typegoose": "^5.9.1"
   }
 }
