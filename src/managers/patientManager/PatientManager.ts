@@ -46,7 +46,7 @@ export class PatientManager implements PatientManagerInterface {
     return this.repository.getWithoutEmail();
   }
 
-  async getWithoutFirstName(patientId: string) {
+  async getWithoutFirstName(){
     return this.repository.getWithoutFirstName();
   }
 
