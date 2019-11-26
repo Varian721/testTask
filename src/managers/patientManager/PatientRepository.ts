@@ -19,7 +19,6 @@ export class PatientRepository {
         result = data.toObject();
         if (result.consent === 1 && Object.keys(result).every((e)=> !isNull((result as any)[e]))){
           const emails: EmailInterface[] = createEmailsWithDays(result, 4);
-          console.log(emails)
           return this.emailSchema.create(emails);
         }
       })
