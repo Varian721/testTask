@@ -16,7 +16,10 @@ const run = async() => {
     ]
     const answers = await inquirer.prompt(mainMenuQuestions);
     await core.loaderService.loadData(answers['path']);
-    const result = await core.patientManager.
+    const resultEmail = await core.patientManager.getAllWithoutEmail();
+    console.log('\n ALL WITHOUT EMAILS', resultEmail, '\n\n\n')
+    const resultFirstName = await core.patientManager.getWithoutFirstName()
+    console.log('\n ALL WITHOUT FIRSTNAME', resultFirstName, '\n\n\n')
     process.exit();
   ;
 }
