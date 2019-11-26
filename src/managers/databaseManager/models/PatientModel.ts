@@ -10,19 +10,19 @@ export class PatientModel extends Typegoose implements PatientInterface {
   @prop({ required: true })
     memberId: string;
 
-  @prop({ required: true })
+  @prop()
     programIdentifier: string;
 
-  @prop({ required: true })
+  @prop()
     dataSource: string;
 
-  @prop({ required: true })
+  @prop()
     cardNumber: string;
 
-  @prop({ required: true })
+  @prop()
     email: string;
 
-  @prop({ required: true })
+  @prop()
     consent: ConsentEnum;
 
   @prop({ required: true, _id: false })

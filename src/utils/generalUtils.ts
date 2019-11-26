@@ -16,7 +16,10 @@ export const createEmailsWithDays = (data: PatientInterface, n: number): EmailIn
       patient_id: data._id,
       email: data.email,
       departure: moment().add('day', i).unix(),
-      mailVariables: data.generalInfo,
+      mailVariables: {
+        firstName: data.generalInfo.firstName,
+        lastName: data.generalInfo.firstName,
+      },
       metaData: {
         creationDate: moment().unix(),
         modificationDate: moment().unix()

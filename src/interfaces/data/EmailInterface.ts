@@ -5,6 +5,6 @@ export interface EmailInterface {
   patient_id: string;
   email: string;
   departure: number;
-  mailVariables: object;
+  mailVariables: {[key: string]: string | number};
   metaData: MetaDataInterface;
 }

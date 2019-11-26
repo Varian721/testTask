@@ -31,7 +31,6 @@ export class PatientManager implements PatientManagerInterface {
     patientRawData = setValues(data, patientRawData);
     patientRawData['consent'] = this.setConsent(patientRawData);
     const patientData = {...patientRawData, generalInfo:{ ...generalInfo }, metaData: {...metaData}};
-    console.log('\n\n\n',patientData, patientData.email, '\n\n\n')
     return this.writeDoc(patientData);
   }
 

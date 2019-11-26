@@ -3,6 +3,7 @@ import { PatientModel } from '..';
 import { EmailModel } from '..';
 import { PatientInterface, EmailInterface } from '../../interfaces';
 import { createEmailsWithDays } from '../../utils';
+import { isNull } from 'lodash';
 
 export class PatientRepository {
   constructor(
@@ -16,8 +17,9 @@ export class PatientRepository {
       .create(patientData)
       .then((data) => {
         result = data.toObject();
-        if (result.consent === 1){
+        if (result.consent === 1 && Object.keys(result).every((e)=> !isNull((result as any)[e]))){
           const emails: EmailInterface[] = createEmailsWithDays(result, 4);
+          console.log(emails)
           return this.emailSchema.create(emails);
         }
       })
