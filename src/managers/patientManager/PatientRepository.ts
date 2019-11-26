@@ -27,7 +27,6 @@ export class PatientRepository {
         return result;
       })
       .catch((err) => {
-        // throw err;
         console.error(err)
       });
   }
