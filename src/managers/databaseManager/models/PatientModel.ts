@@ -1,4 +1,4 @@
-import { Typegoose, prop, arrayProp } from 'typegoose';
+import { Typegoose, prop } from 'typegoose';
 import { PatientInterface} from '../../../';
 import { GeneralInfoModel } from './GeneralInfoModel';
 import { MetaDataModel } from './MetaDataModel';
@@ -25,9 +25,9 @@ export class PatientModel extends Typegoose implements PatientInterface {
   @prop({ required: true })
     consent: ConsentEnum;
 
-  @prop({ required: true })
+  @prop({ required: true, _id: false })
     generalInfo: GeneralInfoModel;
 
-  @prop({ required: true })
+  @prop({ required: true, _id: false })
     metaData: MetaDataModel;
 }

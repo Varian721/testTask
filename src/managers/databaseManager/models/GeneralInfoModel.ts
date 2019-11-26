@@ -2,8 +2,7 @@ import { Typegoose, prop } from 'typegoose';
 import { GeneralInfoInterface } from '../../../';
 
 export class GeneralInfoModel extends Typegoose implements GeneralInfoInterface {
-
-  @prop({ required: true })
+  @prop({required: true })
     firstName: string;
 
   @prop({ required: true })

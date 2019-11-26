@@ -16,7 +16,7 @@ export class DataBaseManager implements DataBaseManagerInterface {
     });
     this.EmailSchema = new EmailModel().getModelForClass(EmailModel, {
       existingMongoose: mongoose,
-      schemaOptions: { _id: true, collection: 'EMAIL' },
+      schemaOptions: { _id: true, collection: 'emails' },
     });
   }
   connect(cb: any){
@@ -32,6 +32,7 @@ export class DataBaseManager implements DataBaseManagerInterface {
     return this.disconnect().then(() =>
       this.connect((err: any) => {
         if (err !== null) {
+          console.log(err);
           serverError(err);
         }
       }),

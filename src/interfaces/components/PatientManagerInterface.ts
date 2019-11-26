@@ -1,6 +1,5 @@
 import {  PatientInterface } from '..';
 import { FlatInterface } from '../general';
-import { EmailInterface } from '../data';
 
 export interface PatientManagerInterface {
   activePatients: object;

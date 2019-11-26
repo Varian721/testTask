@@ -1,6 +1,7 @@
 import fs from 'fs';
 import csv from 'csvtojson';
 import { LoaderServiceInterface, PatientManager  } from '../..';
+import { async } from 'rxjs/internal/scheduler/async';
 
 export class LoaderService implements LoaderServiceInterface{
   protected manager: PatientManager;
@@ -15,8 +16,8 @@ export class LoaderService implements LoaderServiceInterface{
   protected async readFileAndCreateDocument(directory: string ): Promise<any>{
     const inStream = fs.createReadStream(directory);
     return csv({delimiter: '|'}).fromStream(inStream)
-    .subscribe((json)=>{
-      this.manager.createDoc(json);
+    .subscribe(async (json)=>{
+      await this.manager.createDoc(json);
     })
   }
 

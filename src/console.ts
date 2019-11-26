@@ -2,7 +2,7 @@
 import inquirer from 'inquirer';
 import { Core } from './Core';
 
-const core = new Core( { SESSIONS_DB:'localhost:27017/test', ENVIRONMENT: 'prod'});
+const core = new Core( { SESSIONS_DB:'mongodb://127.0.0.1:27017', ENVIRONMENT: 'prod'});
 
 const run = async() => {
   const res = await core.init();
