@@ -8,16 +8,16 @@ export class PatientModel extends Typegoose implements PatientInterface {
 
   _id: string;
   @prop({ required: true })
-    memberId: number;
+    memberId: string;
 
   @prop({ required: true })
-    programIdentifier: number;
+    programIdentifier: string;
 
   @prop({ required: true })
     dataSource: string;
 
   @prop({ required: true })
-    cardNumber: number;
+    cardNumber: string;
 
   @prop({ required: true })
     email: string;

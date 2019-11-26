@@ -4,16 +4,13 @@ import { GeneralInfoInterface } from '../../../';
 export class GeneralInfoModel extends Typegoose implements GeneralInfoInterface {
 
   @prop({ required: true })
-    memberId: string;
-
-  @prop({ required: true })
     firstName: string;
 
   @prop({ required: true })
     lastName: string;
 
   @prop({ required: true })
-    dateOfbirth: Date;
+    dateOfBirth: string;
 
   @prop({ required: true })
     mobilePhone: string;
@@ -31,8 +28,8 @@ export class GeneralInfoModel extends Typegoose implements GeneralInfoInterface 
     city: string;
 
   @prop({ required: true })
-    zip: number;
+    zip: string;
 
   @prop()
-    telephoneNumber: number;
+    telephoneNumber: string;
 }

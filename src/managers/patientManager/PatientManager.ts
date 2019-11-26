@@ -29,8 +29,9 @@ export class PatientManager implements PatientManagerInterface {
     }
     generalInfo = setValues(data, generalInfo);
     patientRawData = setValues(data, patientRawData);
+    patientRawData['consent'] = this.setConsent(patientRawData);
     const patientData = {...patientRawData, generalInfo:{ ...generalInfo }, metaData: {...metaData}};
-    console.log([patientData])
+    console.log('\n\n\n',patientData, patientData.email, '\n\n\n')
     return this.writeDoc(patientData);
   }
 
@@ -40,5 +41,9 @@ export class PatientManager implements PatientManagerInterface {
 
   async getByPatientId(patientId: string) {
     return this.repository.getByPatientId(patientId);
+  }
+
+  protected setConsent(patientRawData: PatientClassInterface): number{
+    return patientRawData['consent'] === 'Y' ? 1 : 0;
   }
 }

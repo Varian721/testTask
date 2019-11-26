@@ -4,10 +4,10 @@ import { MetaDataInterface } from "./";
 
 export interface PatientInterface {
   _id: string;
-  memberId: number;
-  programIdentifier: number;
+  memberId: string;
+  programIdentifier: string;
   dataSource: string;
-  cardNumber: number;
+  cardNumber: string;
   email: string;
   consent: ConsentEnum;
   generalInfo: GeneralInfoInterface;
