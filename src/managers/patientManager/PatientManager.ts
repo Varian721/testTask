@@ -42,6 +42,14 @@ export class PatientManager implements PatientManagerInterface {
     return this.repository.getByPatientId(patientId);
   }
 
+  async getAllWithoutEmail() {
+    return this.repository.getWithoutEmail();
+  }
+
+  async getWithoutFirstName(patientId: string) {
+    return this.repository.getWithoutFirstName();
+  }
+
   protected setConsent(patientRawData: PatientClassInterface): number{
     return patientRawData['consent'] === 'Y' ? 1 : 0;
   }

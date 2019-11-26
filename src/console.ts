@@ -15,8 +15,8 @@ const run = async() => {
       }
     ]
     const answers = await inquirer.prompt(mainMenuQuestions);
-    console.log(answers['path'])
     await core.loaderService.loadData(answers['path']);
+    const result = await core.patientManager.
     process.exit();
   ;
 }

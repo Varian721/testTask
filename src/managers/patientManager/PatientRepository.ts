@@ -38,4 +38,20 @@ export class PatientRepository {
   async getByPatientId(patientId: string) {
     return await this.patientSchema.find({ patientId });
   }
+
+  /**
+   * This method  find all patients without firstName
+   *
+   */
+  async getWithoutFirstName() {
+    return await this.patientSchema.find({$or:[{'generalInfo.firstName': null }, {'generalInfo.firstName': {$exists: false }}]});
+  }
+
+  /**
+   * This method  find all patients without email and with consent Y
+   *
+   */
+    async getWithoutEmail() {
+      return await this.patientSchema.find({$and:[{'email': null }, {'consent': 1}]});
+    }
 }

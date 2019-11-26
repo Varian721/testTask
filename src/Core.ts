@@ -66,4 +66,11 @@ export class Core< CoreConfigInterface extends ConfigInterface = ConfigInterface
     }
     return this._loaderService;
   }
+
+  get patientManager() {
+    if (!this.isInitialized) {
+      throw new Error('core_not_initialized');
+    }
+    return this._patientManager;
+  }
 }
