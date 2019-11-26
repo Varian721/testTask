@@ -1,7 +1,8 @@
 import mongoose from 'mongoose';
 import { PatientModel } from '..';
 import { EmailModel } from '..';
-import { PatientInterface } from '../../interfaces';
+import { PatientInterface, EmailInterface } from '../../interfaces';
+import { createEmailsWithDays } from '../../utils';
 
 export class PatientRepository {
   constructor(
@@ -9,15 +10,16 @@ export class PatientRepository {
     protected emailSchema: mongoose.Model<EmailModel & mongoose.Document, {}>,
   ) {}
 
-  async create(data: PatientInterface) {
-    let result: any;
+  async createPatienAndEmail(patientData: PatientInterface) {
+    let result: PatientInterface;
     return this.patientSchema
-      .create(data)
+      .create(patientData)
       .then((data) => {
         result = data.toObject();
-        return this.patientSchema.create({
-          patient_id: result._id,
-        } as EmailModel);
+        if (result.consent === 1){
+          const emails: EmailInterface[] = createEmailsWithDays(result, 4);
+          return this.emailSchema.create(emails);
+        }
       })
       .then(() => {
         return result;

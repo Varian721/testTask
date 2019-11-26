@@ -4,7 +4,7 @@ class ProjectError extends Error {
   error?: ErrnoException;
   code: number = 500;
 
-  constructor(type, message) {
+  constructor(type: any , message: any) {
     super(message);
 
     if (message instanceof ProjectError) return message;
@@ -15,13 +15,13 @@ class ProjectError extends Error {
   }
 }
 
-function formaError(error) {
+function formaError(error: string) {
   return typeof error === 'string'
     ? error.replace(/\s/gm, '_').toLocaleLowerCase()
     : error;
 }
 
-export function serverError(err: any = '') {
+export function serverError(err: string = '') {
   console.error(
     JSON.stringify({
       message: 'API error',

@@ -20,14 +20,15 @@ export class DataBaseManager implements DataBaseManagerInterface {
     });
   }
   connect(cb: any){
-    mongoose.connect(this.config.SESSIONS_DB, cb);
+    return mongoose.connect(this.config.SESSIONS_DB, { useNewUrlParser: true }, cb)
+    .then(() => console.log('Database connected'))
   }
 
   disconnect(): Promise<void>{
     return mongoose.disconnect();
   }
 
-  reconnect(): Promise<void>{
+  reconnect(): Promise<any>{
     return this.disconnect().then(() =>
       this.connect((err: any) => {
         if (err !== null) {

@@ -29,7 +29,7 @@ export class Core< CoreConfigInterface extends ConfigInterface = ConfigInterface
     this._loaderService = new LoaderService(this._patientManager);
   }
 
-  async init() {
+   async init() {
     if (!this.isInitialized) {
       this.initPromise = new Promise(async (resolve, reject) => {
         try {
@@ -44,8 +44,7 @@ export class Core< CoreConfigInterface extends ConfigInterface = ConfigInterface
   }
 
   async initDB(app?: { set: (name: string, value: any) => any }) {
-    await this._dataBaseManager.reconnect();
-
+    const result = await this._dataBaseManager.reconnect();
     if (app) {
       app.set('mongoose', this._dataBaseManager.getDriver());
     }
@@ -65,6 +64,6 @@ export class Core< CoreConfigInterface extends ConfigInterface = ConfigInterface
     if (!this.isInitialized) {
       throw new Error('core_not_initialized');
     }
-    return this._dataBaseManager;
+    return this._loaderService;
   }
 }

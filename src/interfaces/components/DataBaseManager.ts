@@ -4,6 +4,6 @@ export interface DataBaseManagerInterface {
   EmailSchema: any;
   disconnect(): Promise<void>;
   reconnect(): Promise<void>;
-  connect(cb);
-  getDriver();
+  connect(cb: any): any;
+  getDriver(): any;
 }
