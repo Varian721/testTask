@@ -3,7 +3,7 @@ import { FlatInterface } from '../general';
 
 export interface PatientManagerInterface {
   activePatients: object;
-  createDoc(data: FlatInterface): Promise<PatientInterface>;
-  writeDoc(patientData: PatientInterface): Promise<PatientInterface>;
+  createDoc(data: FlatInterface): Promise<PatientInterface | void>;
+  writeDoc(patientData: PatientInterface): Promise<PatientInterface | void>;
   getByPatientId(PatientId: string): Promise<PatientInterface[]>;
 }
